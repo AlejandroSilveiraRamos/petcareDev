@@ -1,0 +1,46 @@
+<ion-header class="fundo-header">
+  <img class="logo-pages" src="../../assets/imglogo/PetCareLogoSVG.svg" alt="Logo Pet Care">
+  <ion-toolbar>
+    <ion-title>Duvidas Frequentes</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button class="button" menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card >
+      <ion-list>
+        <ion-item  (click)="onePopover()" lines="full" class="fundo tex" >
+           <p>Quais são as vantagens de ser um cuidador?</p>
+        </ion-item>
+        <ion-item (click)="twoPopover()" lines="full" class="fundo tex" >
+           <p>Quais são os serviços oferecidos?</p>
+        </ion-item>
+        <ion-item (click)="threePopover()" lines="full" class="fundo tex" >
+           <p>Como acesso a plataforma da Pet Care?</p>
+        </ion-item>
+        <ion-item (click)="fourPopover()" lines="full" class="fundo tex" >
+           <p>Posso acompanhar meu pet enquanto ele caminha?</p>
+        </ion-item>
+        <ion-item (click)="fivePopover()" lines="full" class="fundo tex" >
+           <p>Qual a segurança que tenho com a Pet Care?</p>
+        </ion-item>
+        <ion-item (click)="sixPopover()" lines="full" class="fundo tex" >
+           <p>Quais são os requisitos para ser um cuidador?</p>
+        </ion-item>
+        <ion-item (click)="sevenPopover()" lines="full" class="fundo tex" >
+           <p>Porque devo solicitar um serviço pela Pet Care?</p>
+        </ion-item>
+        <ion-item (click)="eightPopover()" lines="full" class="fundo tex" >
+           <p>O que é o serviço de transporte?</p>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+   <ion-toolbar class="fundoF">
+     <ion-title class="pet-footer"> PetCare 2021 &copy;</ion-title>
+   </ion-toolbar>
+ </ion-footer>

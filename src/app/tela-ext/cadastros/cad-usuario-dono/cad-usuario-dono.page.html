@@ -1,0 +1,146 @@
+<ion-content lines="none" color="primary"  [hidden]="ocultar.cadUsuario">
+  <ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title> 
+        Cadastro de Usuário
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list class="fundo-tela">
+    <ion-item color="primary">
+      <ion-label position="floating">CPF</ion-label>
+      <ion-label position="floating" mode="ios" [innerHTML]="cpfTest.mensagem" class="{{cpfTest.cor}}"></ion-label>
+      <ion-input type="text" name="cpf" id="cpfInput" (keyup)="confirmaAndMascaraCpf(cpfInput)" #cpfInput></ion-input>
+    </ion-item>
+    <ion-item color="primary">
+      <ion-label position="floating">E-Mail</ion-label>
+      <ion-label position="floating" mode="ios" [innerHTML]="emailTest.mensagem" class="{{emailTest.cor}}"></ion-label>
+      <ion-input type="email" name="email" (keyup)="confirmaEmail(emailInput)" #emailInput></ion-input>
+    </ion-item>
+    <ion-item color="primary">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-label position="floating" mode="ios" [innerHTML]="senhaTest.mensagem" class="{{senhaTest.cor}}"></ion-label>
+      <ion-input type="password" name="senha" #senhaInput (keyup)="verificaSenha(senhaInput.value)"></ion-input>
+    </ion-item>
+    <ion-item color="primary">
+      <ion-label position="floating">Confirmar Senha</ion-label>
+      <ion-label position="floating" mode="ios" [innerHTML]="confirmSenhaTest.mensagem"
+        class="{{confirmSenhaTest.cor}}"></ion-label>
+      <ion-input type="password" name="confirmSenha" #confirmSenhaInput
+        (keyup)="confirmarSenha(senhaInput.value, confirmSenhaInput.value)"></ion-input>
+    </ion-item>
+    <ion-label position="floating" #msgBotaoEnvio></ion-label>
+    <ion-button class="button-native" #btnConfirmaEmail expand="block" [disabled]="true" color="branco"
+      (click)="enviarEmail(emailInput.value, senhaInput.value, cpfInput.value)">
+      Continuar
+    </ion-button>
+  </ion-list>
+</ion-content>
+
+<ion-content color="primary" [hidden]="ocultar.cadInfosPessoais">
+  <ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+        Informações Pessoais
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list class="fundo-tela">
+    <ion-item color="primary">
+      <ion-label position="floating">Nome completo</ion-label>
+      <ion-label position="floating" *ngIf="inputs.nome.emBranco && inputs.nome.editado" class="vermelho">Não pode ficar
+        em branco!</ion-label>
+      <ion-input type="text" mode="ios" (ionFocus)="removeMensagem('nome')"
+        (ionBlur)="isBlank(nomeCompleto.value, 'nome')" #nomeCompleto></ion-input>
+    </ion-item>
+    <ion-item color="primary">
+      <ion-label position="stacked">Nascimento</ion-label>
+      <ion-label position="stacked" *ngIf="inputs.dtNascimento.emBranco && inputs.dtNascimento.editado"
+        class="vermelho">Não pode ficar em branco!</ion-label>
+      <ion-label position="stacked" *ngIf="!inputs.dtNascimento.idadeOK && inputs.dtNascimento.editado"
+        class="vermelho">Data inválida!</ion-label>
+      <ion-input type="date" mode="ios" (ionFocus)="removeMensagem('dtNascimento')"
+        (ionBlur)="isBlank(dtNascimento.value, 'dtNascimento')" (ionBlur)="calcularIdade(dtNascimento.value)"
+        #dtNascimento></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-item color="primary">
+    <ion-label position="floating">RG</ion-label>
+    <ion-label position="floating" *ngIf="inputs.rg.emBranco && inputs.rg.editado" class="vermelho">Não pode ficar em
+      branco!</ion-label>
+    <ion-label position="floating" mode="ios" [innerHTML]="rgTest.mensagem" class="{{rgTest.cor}}"></ion-label>
+    <ion-input type="text" mode="ios" (ionFocus)="removeMensagem('rg')" (ionBlur)="isBlank(rg.value, 'rg')"
+      (keyup)="confirmaRG(rg.value)" #rg></ion-input>
+  </ion-item>
+  <ion-item color="primary">
+    <ion-label position="floating">Telefone</ion-label>
+    <ion-label position="floating" *ngIf="inputs.telefone.emBranco && inputs.telefone.editado" class="vermelho">Não pode
+      ficar em branco!</ion-label>
+    <ion-label position="floating" mode="ios" [innerHTML]="telefoneTest.mensagem" class="{{telefoneTest.cor}}">
+    </ion-label>
+    <ion-input type="text" (ionFocus)="removeMensagem('telefone')" (ionBlur)="isBlank(telefone.value, 'telefone')"
+      (keyup)="confirmaAndMascaraTelefone(telefone)" mode="ios" #telefone></ion-input>
+  </ion-item>
+  <ion-item color="primary">
+    <ion-label position="floating">CEP</ion-label>
+    <ion-label position="floating" *ngIf="inputs.cep.emBranco && inputs.cep.editado" class="vermelho">Não pode ficar em
+      branco!</ion-label>
+    <ion-input type="text" mode="ios" (ionFocus)="removeMensagem('cep')" (ionBlur)="isBlank(cep.value, 'cep')"
+      (keyup)="confirmaCEP(cep, rua, bairro, cidade, uf)" #cep></ion-input>
+  </ion-item>
+  <ion-item color="primary">
+    <ion-label position="floating">Endereço</ion-label>
+
+    <ion-label position="stacked" *ngIf="inputs.rua.emBranco && inputs.rua.editado" class="vermelho"><small>Não pode
+        ficar em branco!</small></ion-label>
+    <ion-input type="text" placeholder="Rua" (ionFocus)="removeMensagem('rua')" (ionBlur)="isBlank(rua.value, 'rua')"
+      #rua></ion-input>
+
+    <ion-label position="stacked" *ngIf="inputs.numero.emBranco && inputs.numero.editado" class="vermelho">Não pode
+      ficar em branco!</ion-label>
+    <ion-input type="number" placeholder="Número" (ionFocus)="removeMensagem('numero')"
+      (ionBlur)="isBlank(numero.value, 'numero')" #numero></ion-input>
+
+    <ion-label position="stacked" class="azul">(Caso more em apartamento)</ion-label>
+    <ion-input type="text" placeholder="Complemento (Bloco A - Apto. 01)" #complemento></ion-input>
+
+    <ion-label position="stacked" *ngIf="inputs.bairro.emBranco && inputs.bairro.editado" class="vermelho"><small>Não
+        pode ficar em branco!</small></ion-label>
+    <ion-input type="text" placeholder="Bairro" (ionFocus)="removeMensagem('bairro')"
+      (ionBlur)="isBlank(bairro.value, 'bairro')" #bairro></ion-input>
+
+    <ion-label position="stacked" *ngIf="inputs.referencia.emBranco && inputs.referencia.editado" class="vermelho">
+      <small>Não pode ficar em branco!</small></ion-label>
+    <ion-input type="text" placeholder="Referência" (ionFocus)="removeMensagem('referencia')"
+      (ionBlur)="isBlank(referencia.value, 'referencia')" #referencia></ion-input>
+
+    <ion-label position="stacked" *ngIf="inputs.cidade.emBranco && inputs.cidade.editado" class="vermelho"><small>Não
+        pode ficar em branco!</small></ion-label>
+    <ion-input type="text" placeholder="Cidade" (ionFocus)="removeMensagem('cidade')"
+      (ionBlur)="isBlank(cidade.value, 'cidade')" #cidade></ion-input>
+
+    <ion-label position="stacked" *ngIf="inputs.uf.emBranco && inputs.uf.editado" class="vermelho"><small>Não pode ficar
+        em branco!</small></ion-label>
+    <ion-input type="text" placeholder="UF" (ionFocus)="removeMensagem('uf')" (ionBlur)="isBlank(uf.value, 'uf')"
+      (keyup)="ativarBotaoCadInfos()" #uf></ion-input>
+  </ion-item>
+
+  <ion-item color="primary">
+    <ion-label><small>Leia os termos de Segurança
+        antes de continuar</small></ion-label>
+  </ion-item>
+  <ion-item color="primary">
+    <ion-label for="checkTermos"> Concordo com os Termos</ion-label>
+    <ion-checkbox id="checkTermos" (click)="aceitaTermos(checkTermos)" #checkTermos></ion-checkbox>
+  </ion-item>
+
+  <ion-button color="branco" class="button-native ion-color-branco" #confirmaInfosBtn expand="block" [disabled]="true"  (click)="cadastrarDono()">
+    Continuar
+  </ion-button>
+</ion-content>

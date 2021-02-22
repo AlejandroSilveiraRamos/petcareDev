@@ -1,0 +1,32 @@
+<ion-content color="primary">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list class="fundo-tela">
+    <ion-item color="primary">
+      <ion-label position="floating" mode="ios">E-Mail</ion-label>
+      <ion-label position="floating" mode="ios" *ngIf="this.inputs.email.emBranco && this.inputs.email.editado"
+      class="redtext">Não pode ficar em Branco!</ion-label>
+      <ion-input type="text"
+      (ionFocus)="removeMensagem('email')"
+      (ionBlur)="isBlank(email.value, 'email')"
+      (keyup)="verificaEmail(email.value)" #email></ion-input>
+    </ion-item>
+    <ion-item color="primary">
+      <ion-label position="floating" mode="ios">Senha</ion-label>
+      <ion-label position="floating" mode="ios" *ngIf="this.inputs.senha.emBranco && this.inputs.senha.editado"
+      class="redtext">Não pode ficar em Branco!</ion-label>
+      <ion-input type="password"
+      (ionFocus)="removeMensagem('senha')"
+      (ionBlur)="isBlank(senha.value, 'senha')"
+      (keyup)="verificaSenha(senha.value)" #senha></ion-input>
+    </ion-item>
+    <ion-button [disabled]="true"
+    color="branco" expand="block" (click)="logar(email.value, senha.value)" #btnLogin>Logar</ion-button>
+  </ion-list>
+</ion-content>

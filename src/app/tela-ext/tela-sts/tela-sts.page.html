@@ -1,0 +1,22 @@
+<ion-content>
+      <ion-slides pager="true">
+        <ion-slide id="sld" *ngFor="let slide of slides">
+            <div>
+              <img [src]="slide.img">
+            </div>
+            <div class="text"> 
+              <h1  [innerHTML]="slide.princ"></h1>
+            </div>
+            <div class="text">
+              <h3 [innerHTML]="slide.titulo"></h3>
+            </div>
+            <div *ngIf="slide.princ == 3">
+              <h3 [innerHTML]="slide.new"></h3>
+              <ion-button (click)="goTo('cad-usuario-dono')" [innerHTML]="slide.cadastro"></ion-button><br>
+              <h3 [innerHTML]="slide.homet"></h3>
+              <ion-button (click)="goTo('login')" [innerHTML]="slide.home"></ion-button>
+            </div>
+            
+        </ion-slide>
+      </ion-slides>
+</ion-content>

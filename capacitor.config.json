@@ -1,0 +1,13 @@
+{
+  "appId": "br.com.petcare",
+  "appName": "Pet Care",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

@@ -1,0 +1,50 @@
+<ion-app >
+  <!-- Menu sideBar-->
+  <ion-menu menuId="main-menu" content-id="main">
+    <ion-content class="item-fundo-externo">
+      <ion-list class="item-fundo-externo">
+        <ion-list-header id="logo-menu">
+            <img src="../assets/imglogo/PetCareLogoSVG.svg" alt="Pet Care Logo">
+        </ion-list-header>
+          <ion-menu-toggle >
+            <ion-item lines="none" class="item-fundo" routerLink="{{ getHomeLink() }}">
+              <img class="icon-menu" src="../assets/icon/iconMenu/homeIco.ico" alt="">
+              <ion-label class="text-h">Home</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none" class="item-fundo" routerLink="contrate-servico">
+              <img class="icon-menu" src="../assets/icon/iconMenu/contrateIco.ico" alt="">
+              <ion-label class="text-h">Contrate um serviço</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none" class="item-fundo" routerLink="seja-cuidador">
+              <img class="icon-menu" src="../assets/icon/iconMenu/cuidadorIco.ico" alt="">
+              <ion-label class="text-h">Seja um cuidador</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none" class="item-fundo" routerLink="petcare">
+              <img class="icon-menu" src="../assets/icon/iconMenu/petcareIco.ico" alt="">
+              <ion-label class="text-h">Pet Care</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none" class="item-fundo" routerLink="duvidas-frequentes">
+              <img class="icon-menu" src="../assets/icon/iconMenu/duvidasIco.ico" alt="">
+              <ion-label class="text-h">Duvidas frequentes</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none" class="item-fundo" routerLink="seja-heroi">
+              <img class="icon-menu" src="../assets/icon/iconMenu/heroiIco.ico" alt="">
+              <ion-label class="text-h">Seja um herói</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

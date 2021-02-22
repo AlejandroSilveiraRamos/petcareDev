@@ -1,0 +1,21 @@
+input[type="radio"] {
+    visibility: hidden;
+}
+
+label {
+    img {
+        height: 100px;
+    }
+}
+
+input[type="radio"]:checked+label img {
+    border: 5px solid #EcF0F1;
+    border-radius: 100%;
+}
+
+.button-native{
+    --ion-color-contrast: #2ecc71;
+  }
+.tipo-pessoa{
+    padding-top: .3rem;
+}

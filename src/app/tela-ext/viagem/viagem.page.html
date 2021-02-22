@@ -1,0 +1,74 @@
+<ion-content color="tertiary">
+  <ion-header  class="header-green">
+    <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>viagem</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list class="fundo-verde">
+    <ion-item color="tertiary">
+       <ion-label position="floating">Nome do Pet</ion-label>
+       <ion-input type="text" (keyup)="isBlank(nomePet.value, 'nomePet')" #nomePet></ion-input>
+     </ion-item>
+    <ion-item color="tertiary">
+      <ion-label>Espécie</ion-label>
+       <ion-select value="notifications" (ionChange)="isBlank(especie.value, 'especie')" interface="action-sheet" #especie>
+        <ion-select-option value="Cachorro">Cachorro</ion-select-option>
+        <ion-select-option value="Gato">Gato</ion-select-option>
+        <ion-select-option value="Pássaro">Pássaro</ion-select-option>
+        <ion-select-option value="Peixe">Peixe</ion-select-option>
+        <ion-select-option value="Hamster">Hamster</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item color="tertiary">
+      <ion-label>Tamanho</ion-label>
+       <ion-select value="notifications" (ionChange)="isBlank(tamanho.value, 'tamanho')" interface="action-sheet" #tamanho>
+         <ion-select-option value="Pequeno">Pequeno</ion-select-option>
+         <ion-select-option value="Médio">Médio</ion-select-option>
+        <ion-select-option value="Grande">Grande</ion-select-option>
+       </ion-select>
+    </ion-item>
+
+    <ion-item color="tertiary">
+      <ion-label position="floating">Edereço de partida</ion-label>
+      <ion-label position="floating">CEP</ion-label>
+      <ion-input (keyup)="confirmaCEP(cepPartida, ruaPartida, bairroPartida, cidadePartida, ufPartida, 'enderecoPartida')" #cepPartida></ion-input>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-label position="stacked"></ion-label>
+      <ion-input placeholder="Rua" (keyup)="isBlankEndereco(ruaPartida.value, 'enderecoPartida', 'rua')" #ruaPartida></ion-input>
+      <ion-input placeholder="Numero" (keyup)="isBlankEndereco(numeroPartida.value, 'enderecoPartida', 'numero')" #numeroPartida></ion-input>
+      <ion-input placeholder="Complemento (Bloco A - Apto. 01" #complementoPartida></ion-input>
+      <ion-input placeholder="Bairro" (keyup)="isBlankEndereco(bairroPartida.value, 'enderecoPartida', 'bairro')" #bairroPartida></ion-input>
+      <ion-input placeholder="Referência" (keyup)="isBlankEndereco(referenciaPartida.value, 'enderecoPartida', 'referencia')" #referenciaPartida></ion-input>
+      <ion-input placeholder="Cidade" (keyup)="isBlankEndereco(cidadePartida.value, 'enderecoPartida', 'cidade')" #cidadePartida></ion-input>
+      <ion-input placeholder="UF" (keyup)="isBlankEndereco(ufPartida.value, 'enderecoPartida', 'uf')" #ufPartida></ion-input>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-label position="floating">Edereço de destino</ion-label>
+      <ion-label position="floating">CEP</ion-label>
+      <ion-input (keyup)="confirmaCEP(cepDestino, ruaDestino, bairroDestino, cidadeDestino, ufDestino, 'enderecoDestino')" #cepDestino></ion-input>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-label position="stacked"></ion-label>
+      <ion-input placeholder="Rua" (keyup)="isBlankEndereco(ruaDestino.value, 'enderecoDestino', 'rua')" #ruaDestino></ion-input>
+      <ion-input placeholder="Numero" (keyup)="isBlankEndereco(numeroDestino.value, 'enderecoDestino', 'numero')" #numeroDestino></ion-input>
+      <ion-input placeholder="Complemento (Bloco A - Apto. 01)" #complementoDestino></ion-input>
+      <ion-input placeholder="Bairro" (keyup)="isBlankEndereco(bairroDestino.value, 'enderecoDestino', 'bairro')" #bairroDestino></ion-input>
+      <ion-input placeholder="Referência" (keyup)="isBlankEndereco(referenciaDestino.value, 'enderecoDestino', 'referencia')" #referenciaDestino></ion-input>
+      <ion-input placeholder="Cidade" (keyup)="isBlankEndereco(cidadeDestino.value, 'enderecoDestino', 'cidade')" #cidadeDestino></ion-input>
+      <ion-input placeholder="UF" (keyup)="isBlankEndereco(ufDestino.value, 'enderecoDestino', 'uf')" #ufDestino></ion-input>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-label position="floating">Detalhes</ion-label>
+      <ion-textarea (keyup)="isBlank(detalhes.value, 'detalhes')" #detalhes></ion-textarea>
+    </ion-item>
+    <ion-button color="branco" class="button-native" expand="block" [disabled]=true (click)="goTo('viagem-services')" #btnContinuar>
+      Continuar
+    </ion-button>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header class="header-blue">
+  <img class="logo-pages" src="../../assets/imglogo/PetCareLogoSVG.svg" alt="Logo Pet Care">
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button class="button" menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-toolbar class="dist" lines="none">
+      <ion-button (click)="goTo('login')" class="button-login">Login</ion-button>
+      <ion-button (click)="goTo('cad-usuario-dono')" class="button-login" >Cadastrar</ion-button>
+     </ion-toolbar>
+  </ion-item>
+ <div class="ion">
+  <ion-slides pager>
+  <ion-slide> <img src="../../assets/imgBanner/petcareDog.jpg" alt=""></ion-slide>
+  <ion-slide> <img src="../../assets/imgBanner/petcareCat.jpg" alt=""></ion-slide>
+  </ion-slides>
+</div> 
+<div class="ion">
+  <ion-slides pager>
+  <ion-slide> <img src="../../assets/imgBanner/50petcare.jpg" alt=""></ion-slide>
+  <ion-slide> <img src="../../assets/imgBanner/petzadd.jpg" alt=""></ion-slide>
+  </ion-slides>
+</div> 
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="fundoF">
+    <ion-title class="pet-footer"> PetCare 2021 &copy;</ion-title>
+  </ion-toolbar>
+</ion-footer>

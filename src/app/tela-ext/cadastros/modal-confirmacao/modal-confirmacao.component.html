@@ -1,0 +1,17 @@
+<ion-header color="primary" class="fundo-tela">
+  <ion-toolbar color="primary">
+    <ion-title>Confirmar E-Mail</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="fundo-tela">
+  <ion-list >
+    <ion-item color="primary">
+      <ion-label position="floating">Código de confirmação</ion-label>
+      <ion-input placeholder="Insira o código" type="text" (keyup)="verificaCodigo(codigoInput)" #codigoInput></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button color="branco" class="button-native ion-color-branco" expand="block" type="text" [disabled]="botaoDesativado" (click)="fecharModal()">
+    Continuar
+  </ion-button>
+</ion-content>

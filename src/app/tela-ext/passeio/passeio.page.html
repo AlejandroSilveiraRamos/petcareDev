@@ -1,0 +1,54 @@
+<ion-content color="tertiary">
+  <ion-header  class="header-green">
+    <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Passeio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list class="fundo-verde">
+    <ion-item color="tertiary">
+       <ion-label position="floating">Nome do Pet</ion-label>
+       <ion-input type="text" (keyup)="isBlank(nomePet.value, 'nomePet')" #nomePet></ion-input>
+     </ion-item>
+    <ion-item color="tertiary">
+      <ion-label>Espécie</ion-label>
+       <ion-select value="notifications" (ionChange)="isBlank(especie.value, 'especie')" interface="action-sheet" #especie>
+        <ion-select-option value="Cachorro">Cachorro</ion-select-option>
+        <ion-select-option value="Gato">Gato</ion-select-option>
+      </ion-select>
+     </ion-item>
+     <ion-item color="tertiary">
+       <ion-label position="floating">Raça</ion-label>
+       <ion-input type="text" (keyup)="isBlank(raca.value, 'raca')"  #raca></ion-input>
+     </ion-item>
+     <ion-item color="tertiary">
+      <ion-label>Tamanho</ion-label>
+       <ion-select value="notifications" (ionChange)="isBlank(tamanho.value, 'tamanho')" interface="action-sheet" #tamanho>
+         <ion-select-option value="Pequeno">Pequeno</ion-select-option>
+         <ion-select-option value="Médio">Médio</ion-select-option>
+        <ion-select-option value="Grande">Grande</ion-select-option>
+       </ion-select>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-label>Tempo</ion-label>
+      <ion-select value="notifications" (ionChange)="isBlank(tempo.value, 'tempo')" interface="action-sheet" #tempo>
+        <ion-select-option value="one">1 Hora</ion-select-option>
+        <ion-select-option value="two">2 Horas</ion-select-option>
+        <ion-select-option value="three">3 Horas</ion-select-option>
+        <ion-select-option value="four">4 Horas</ion-select-option>
+        <ion-select-option value="five">5 Horas</ion-select-option>
+        <ion-select-option value="six">6 Horas</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-label position="floating">Detalhes</ion-label>
+      <ion-textarea (keyup)="isBlank(detalhes.value, 'detalhes')" #detalhes></ion-textarea>
+    </ion-item>
+    <ion-button color="branco" class="button-native" expand="block" [disabled]="true" (click)="goTo()" #btnContinuar>
+      Continuar
+    </ion-button>
+  </ion-list>
+</ion-content>

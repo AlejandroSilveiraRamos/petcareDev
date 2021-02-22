@@ -1,0 +1,29 @@
+<ion-header class="header-green">
+  <img class="logo-pages" src="../../assets/imglogo/PetCareLogoSVG.svg" alt="Logo Pet Care">
+  <ion-toolbar>
+    <ion-title>Contrate um servico</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button class="button-green" menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-list class="services-padding">
+      <ion-item>
+        <ion-button (click)="goTo('hospedagem')" size="default" class="button-service">Hospedagem</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="goTo('passeio')" size="default"  class="button-service">Passeio</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="goTo('viagem')" size="default" class="button-service">Viagem</ion-button>
+      </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="fundoF">
+    <ion-title class="pet-footer"> PetCare 2021 &copy;</ion-title>
+  </ion-toolbar>
+</ion-footer>

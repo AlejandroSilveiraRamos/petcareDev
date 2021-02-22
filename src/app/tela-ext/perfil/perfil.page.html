@@ -1,0 +1,53 @@
+<ion-content color="primary">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list class="fundo-tela" *ngIf="tipoUsuario == 1 || tipoUsuario == 2">
+    <ion-item color="primary" lines="none">Nome: </ion-item>
+    <ion-item color="primary">{{infosPessoais.nome}}</ion-item>
+    <ion-item color="primary" lines="none">Data de Nascimento: </ion-item>
+    <ion-item color="primary">{{infosPessoais.dtNascimento}}</ion-item>
+    <ion-item color="primary" lines="none">RG: </ion-item>
+    <ion-item color="primary">{{infosPessoais.rg}}</ion-item>
+    <ion-item color="primary" lines="none">CPF: </ion-item>
+    <ion-item color="primary">{{infosPessoais.cpf}}</ion-item>
+    <ion-item color="primary" lines="none">E-Mail: </ion-item>
+    <ion-item color="primary">{{infosPessoais.email}}</ion-item>
+    <ion-item color="primary" lines="none">Contatos: </ion-item>
+    <ion-item color="primary" *ngFor="let numero of contatos">{{numero.telefone}}</ion-item>
+    <ion-item color="primary" lines="none">Endereços: </ion-item>
+    <ion-list *ngFor="let endereco of enderecos">
+      <ion-item color="primary" lines="none">{{endereco.cep}}</ion-item>
+      <ion-item color="primary" lines="none">{{endereco.rua}}, {{endereco.numero}}</ion-item>
+      <ion-item color="primary" lines="none" *ngIf="endereco.complemento != null">{{endereco.complemento}}, {{endereco.referencia}}</ion-item>
+      <ion-item color="primary" lines="none" *ngIf="endereco.complemento === null">{{endereco.referencia}}</ion-item>
+      <ion-item color="primary" lines="none">{{endereco.bairro}}, {{endereco.cidade}}, {{endereco.uf}}</ion-item>
+    </ion-list>
+  </ion-list>
+  <ion-list class="fundo-tela" *ngIf="tipoUsuario == 3">
+    <ion-item color="primary" lines="none">Razão Social: </ion-item>
+    <ion-item color="primary">{{infosJuridico.razaoSocial}}</ion-item>
+    <ion-item color="primary" lines="none">Responsável: </ion-item>
+    <ion-item color="primary">{{infosJuridico.responsavel}}</ion-item>
+    <ion-item color="primary" lines="none">CNPJ: </ion-item>
+    <ion-item color="primary">{{infosJuridico.cnpj}}</ion-item>
+    <ion-item color="primary" lines="none">E-Mail: </ion-item>
+    <ion-item color="primary">{{infosJuridico.email}}</ion-item>
+    <ion-item color="primary" lines="none">Contatos: </ion-item>
+    <ion-item color="primary" *ngFor="let numero of contatos">{{numero.telefone}}</ion-item>
+    <ion-item color="primary" lines="none">Endereços: </ion-item>
+    <ion-list class="fundo-tela" *ngFor="let endereco of enderecos">
+      <ion-item color="primary" lines="none">{{endereco.cep}}</ion-item>
+      <ion-item color="primary" lines="none">{{endereco.rua}}, {{endereco.numero}}</ion-item>
+      <ion-item color="primary" lines="none" *ngIf="endereco.complemento != null">{{endereco.complemento}}, {{endereco.referencia}}</ion-item>
+      <ion-item color="primary" lines="none" *ngIf="endereco.complemento === null">{{endereco.referencia}}</ion-item>
+      <ion-item color="primary" lines="none">{{endereco.bairro}}, {{endereco.cidade}}, {{endereco.uf}}</ion-item>
+    </ion-list>
+  </ion-list>
+</ion-content>
+
